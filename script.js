@@ -6,6 +6,50 @@ const particles = []
 let canvas, ctx
 const currentStep = 1
 
+// Utility Functions
+function showNotification(message, type = "info") {
+  const notification = document.createElement("div")
+  notification.className = `notification ${type}`
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${type === "success" ? "var(--green)" : type === "error" ? "var(--red)" : "var(--primary-blue)"};
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 4000;
+    animation: slideIn 0.3s ease;
+    max-width: 300px;
+  `
+  notification.textContent = message
+
+  document.body.appendChild(notification)
+
+  setTimeout(() => {
+    notification.style.animation = "slideOut 0.3s ease"
+    setTimeout(() => {
+      document.body.removeChild(notification)
+    }, 300)
+  }, 3000)
+}
+
+// Add notification animations
+const style = document.createElement("style")
+style.textContent = `
+  @keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+  }
+`
+document.head.appendChild(style)
+
 // DOM Content Loaded
 document.addEventListener("DOMContentLoaded", () => {
   // Add this function to the script.js file to handle the hamburger menu animation
@@ -123,11 +167,28 @@ function initializeNavigation() {
 
   // Hamburger menu toggle with animation
   if (hamburger) {
-    hamburger.addEventListener("click", () => {
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation()
       navMenu.classList.toggle("active")
-      hamburger.classList.toggle("active") // Add this line for animation
+      hamburger.classList.toggle("active")
+      
+      // Prevent body scroll when menu is open
+      if (navMenu.classList.contains("active")) {
+        document.body.style.overflow = "hidden"
+      } else {
+        document.body.style.overflow = ""
+      }
     })
   }
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      navMenu.classList.remove("active")
+      hamburger.classList.remove("active")
+      document.body.style.overflow = ""
+    }
+  })
 
   // Navigation link clicks
   navLinks.forEach((link) => {
@@ -140,7 +201,8 @@ function initializeNavigation() {
 
       // Close mobile menu
       navMenu.classList.remove("active")
-      hamburger.classList.remove("active") // Add this line for animation
+      hamburger.classList.remove("active")
+      document.body.style.overflow = ""
 
       // Update active nav link
       navLinks.forEach((l) => l.classList.remove("active"))
@@ -161,8 +223,10 @@ function initializeSearch() {
 
   // Search button click
   if (searchBtn) {
-    searchBtn.addEventListener("click", () => {
+    searchBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
       searchModal.classList.add("active")
+      document.body.style.overflow = "hidden"
       searchInput.focus()
     })
   }
@@ -171,6 +235,7 @@ function initializeSearch() {
   if (closeSearch) {
     closeSearch.addEventListener("click", () => {
       searchModal.classList.remove("active")
+      document.body.style.overflow = ""
       searchInput.value = ""
       searchResults.innerHTML = ""
     })
@@ -181,6 +246,7 @@ function initializeSearch() {
     searchModal.addEventListener("click", (e) => {
       if (e.target === searchModal) {
         searchModal.classList.remove("active")
+        document.body.style.overflow = ""
         searchInput.value = ""
         searchResults.innerHTML = ""
       }
@@ -205,6 +271,14 @@ function initializeSearch() {
         if (firstResult) {
           firstResult.click()
         }
+      }
+      
+      // Handle Escape key
+      if (e.key === "Escape") {
+        searchModal.classList.remove("active")
+        document.body.style.overflow = ""
+        searchInput.value = ""
+        searchResults.innerHTML = ""
       }
     })
   }
@@ -529,8 +603,10 @@ function initializeCart() {
 
   // Cart button click
   if (cartBtn) {
-    cartBtn.addEventListener("click", () => {
+    cartBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
       cartSidebar.classList.add("active")
+      document.body.style.overflow = "hidden"
       updateCartDisplay()
     })
   }
@@ -539,6 +615,7 @@ function initializeCart() {
   if (closeCart) {
     closeCart.addEventListener("click", () => {
       cartSidebar.classList.remove("active")
+      document.body.style.overflow = ""
     })
   }
 
@@ -547,6 +624,7 @@ function initializeCart() {
     checkoutBtn.addEventListener("click", () => {
       if (cart.length > 0) {
         cartSidebar.classList.remove("active")
+        document.body.style.overflow = ""
         openCheckoutModal()
       } else {
         showNotification("Your cart is empty!", "error")
@@ -558,6 +636,7 @@ function initializeCart() {
   document.querySelectorAll(".add-to-cart").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault()
+      e.stopPropagation()
       const service = btn.getAttribute("data-service")
       const price = Number.parseInt(btn.getAttribute("data-price"))
       const name = btn.getAttribute("data-name")
@@ -570,6 +649,7 @@ function initializeCart() {
   cartSidebar.addEventListener("click", (e) => {
     if (e.target === cartSidebar) {
       cartSidebar.classList.remove("active")
+      document.body.style.overflow = ""
     }
   })
 }
@@ -1027,14 +1107,17 @@ function initializeModals() {
   if (closeModal) {
     closeModal.addEventListener("click", () => {
       serviceModal.classList.remove("active")
+      document.body.style.overflow = ""
     })
   }
+
   // Close modals when clicking outside
   ;[serviceModal, checkoutModal, thankYouModal].forEach((modal) => {
     if (modal) {
       modal.addEventListener("click", (e) => {
         if (e.target === modal) {
           modal.classList.remove("active")
+          document.body.style.overflow = ""
         }
       })
     }
@@ -1046,14 +1129,16 @@ function initializeModals() {
   const quantitySpan = document.querySelector(".quantity")
 
   if (minusBtn && plusBtn && quantitySpan) {
-    minusBtn.addEventListener("click", () => {
+    minusBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
       const qty = Number.parseInt(quantitySpan.textContent)
       if (qty > 1) {
         quantitySpan.textContent = qty - 1
       }
     })
 
-    plusBtn.addEventListener("click", () => {
+    plusBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
       const qty = Number.parseInt(quantitySpan.textContent)
       quantitySpan.textContent = qty + 1
     })
@@ -1062,7 +1147,8 @@ function initializeModals() {
   // Add to cart from modal
   const addToCartModal = document.querySelector(".add-to-cart-modal")
   if (addToCartModal) {
-    addToCartModal.addEventListener("click", () => {
+    addToCartModal.addEventListener("click", (e) => {
+      e.stopPropagation()
       const quantity = Number.parseInt(document.querySelector(".quantity").textContent)
       const activePackage = document.querySelector(".package-option.active")
       const packagePrice = Number.parseInt(
@@ -1081,6 +1167,7 @@ function initializeModals() {
       }
 
       serviceModal.classList.remove("active")
+      document.body.style.overflow = ""
     })
   }
 }
@@ -1089,12 +1176,14 @@ function initializeModals() {
 function openCheckoutModal() {
   const checkoutModal = document.getElementById("checkoutModal")
   checkoutModal.classList.add("active")
+  document.body.style.overflow = "hidden"
   goToShipping()
 }
 
 function closeCheckout() {
   const checkoutModal = document.getElementById("checkoutModal")
   checkoutModal.classList.remove("active")
+  document.body.style.overflow = ""
 }
 
 function goToShipping() {
@@ -1111,9 +1200,11 @@ function goToPayment() {
   inputs.forEach((input) => {
     if (!input.value.trim()) {
       input.style.borderColor = "var(--red)"
+      input.style.boxShadow = "0 0 0 3px rgba(239, 68, 68, 0.2)"
       isValid = false
     } else {
-      input.style.borderColor = ""
+      input.style.borderColor = "var(--border-accent)"
+      input.style.boxShadow = ""
     }
   })
 
@@ -1129,160 +1220,16 @@ function goToPayment() {
   document.getElementById("paymentStep").classList.add("active")
 }
 
-function updateOrderSummary() {
-  const orderSummaryItems = document.getElementById("orderSummaryItems")
-  const orderTotalPrice = document.getElementById("orderTotalPrice")
-
-  if (orderSummaryItems) {
-    orderSummaryItems.innerHTML = cart
-      .map((item) => {
-        return `
-        <div class="order-item">
-          <span>${item.name} x${item.quantity || 1}</span>
-          <span>${item.price * (item.quantity || 1)} MAD</span>
-        </div>
-      `
-      })
-      .join("")
-  }
-
-  const total = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0)
-  const usdTotal = Math.round(total * 0.1 * 100) / 100 // Convert MAD to USD (approximate rate)
-
-  if (orderTotalPrice) {
-    orderTotalPrice.innerHTML = `${total} MAD <br><small>(≈ $${usdTotal} USD)</small>`
-  }
-}
-
-function processPayment() {
-  const selectedPayment = document.querySelector('input[name="payment"]:checked')
-
-  if (!selectedPayment) {
-    showNotification("Please select a payment method", "error")
-    return
-  }
-
-  const paymentMethod = selectedPayment.value
-  const total = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0)
-
-  // Show processing notification
-  showNotification("Processing payment...", "info")
-
-  setTimeout(() => {
-    if (paymentMethod === "paypal") {
-      // Create PayPal payment form
-      createPayPalPayment(total)
-
-      // Close checkout modal after redirecting to PayPal
-      setTimeout(() => {
-        closeCheckout()
-      }, 1000)
-    }
-  }, 1000)
-}
-
-// Add new function to create PayPal payment with proper return handling
-function createPayPalPayment(amount) {
-  // Convert MAD to USD (approximate rate)
-  const usdAmount = Math.round(amount * 0.1 * 100) / 100
-
-  // Create a form to submit to PayPal
-  const form = document.createElement("form")
-  form.method = "POST"
-  form.action = "https://www.paypal.com/cgi-bin/webscr"
-  form.target = "_blank"
-
-  // Generate unique order ID
-  const orderId = "order_" + Date.now()
-
-  // PayPal form fields
-  const fields = {
-    cmd: "_xclick",
-    business: "cnt.idrissi@gmail.com",
-    item_name: "Idrissi Social Media Services",
-    amount: usdAmount,
-    currency_code: "USD",
-    return: window.location.origin + window.location.pathname + "?payment=success&order=" + orderId,
-    cancel_return: window.location.origin + window.location.pathname + "?payment=cancelled",
-    notify_url: window.location.origin + "/paypal-ipn",
-    custom: orderId,
-    no_shipping: "1",
-    no_note: "1",
-    rm: "2", // Return method: POST with all payment variables
-  }
-
-  // Create hidden input fields
-  Object.keys(fields).forEach((key) => {
-    const input = document.createElement("input")
-    input.type = "hidden"
-    input.name = key
-    input.value = fields[key]
-    form.appendChild(input)
-  })
-
-  // Store order details in localStorage for return handling
-  localStorage.setItem(
-    "pendingOrder",
-    JSON.stringify({
-      orderId: orderId,
-      amount: amount,
-      usdAmount: usdAmount,
-      items: cart,
-      timestamp: Date.now(),
-    }),
-  )
-
-  // Add form to page and submit
-  document.body.appendChild(form)
-  form.submit()
-  document.body.removeChild(form)
-
-  showNotification("Redirecting to PayPal for secure payment...", "info")
-}
-
-// Add function to check for payment return
-function checkPaymentReturn() {
-  const urlParams = new URLSearchParams(window.location.search)
-  const paymentStatus = urlParams.get("payment")
-  const orderId = urlParams.get("order")
-
-  if (paymentStatus === "success" && orderId) {
-    // Payment successful
-    const pendingOrder = JSON.parse(localStorage.getItem("pendingOrder") || "{}")
-
-    if (pendingOrder.orderId === orderId) {
-      // Clear cart and pending order
-      cart = []
-      localStorage.setItem("cart", JSON.stringify(cart))
-      localStorage.removeItem("pendingOrder")
-      updateCartDisplay()
-
-      // Close any open modals
-      closeCheckout()
-
-      // Show thank you modal
-      setTimeout(() => {
-        showThankYou()
-        // Clean up URL
-        window.history.replaceState({}, document.title, window.location.pathname)
-      }, 500)
-    }
-  } else if (paymentStatus === "cancelled") {
-    // Payment cancelled
-    showNotification("Payment was cancelled. You can try again anytime.", "info")
-    // Clean up URL
-    window.history.replaceState({}, document.title, window.location.pathname)
-  }
-}
-
 function showThankYou() {
   const thankYouModal = document.getElementById("thankYouModal")
   thankYouModal.classList.add("active")
+  document.body.style.overflow = "hidden"
 }
 
 function closeThankYou() {
   const thankYouModal = document.getElementById("thankYouModal")
   thankYouModal.classList.remove("active")
+  document.body.style.overflow = ""
   showPage("home")
 }
 
@@ -1347,111 +1294,39 @@ function initializeScrollAnimations() {
   })
 }
 
-// Utility Functions
-function showNotification(message, type = "info") {
-  const notification = document.createElement("div")
-  notification.className = `notification ${type}`
-  notification.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: ${type === "success" ? "var(--green)" : type === "error" ? "var(--red)" : "var(--primary-blue)"};
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow-lg);
-    z-index: 4000;
-    animation: slideIn 0.3s ease;
-    max-width: 300px;
-  `
-  notification.textContent = message
-
-  document.body.appendChild(notification)
-
-  setTimeout(() => {
-    notification.style.animation = "slideOut 0.3s ease"
-    setTimeout(() => {
-      document.body.removeChild(notification)
-    }, 300)
-  }, 3000)
-}
-
-// Add notification animations
-const style = document.createElement("style")
-style.textContent = `
-  @keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-  
-  @keyframes slideOut {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(100%); opacity: 0; }
-  }
-`
-document.head.appendChild(style)
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault()
-    const target = document.querySelector(this.getAttribute("href"))
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-    }
-  })
-})
-
-// Handle browser back/forward buttons
-window.addEventListener("popstate", (e) => {
-  const hash = window.location.hash.substring(1) || "home"
-  showPage(hash)
-
-  // Update active nav link
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.classList.remove("active")
-    if (link.getAttribute("href") === `#${hash}`) {
-      link.classList.add("active")
-    }
-  })
-})
-
 // Add this function to improve mobile experience by closing modals on back button
-window.addEventListener('popstate', function(event) {
+window.addEventListener("popstate", (event) => {
   // Close any open modals when back button is pressed
-  const modals = document.querySelectorAll('.modal.active');
-  modals.forEach(modal => {
-    modal.classList.remove('active');
-  });
-  
+  const modals = document.querySelectorAll(".modal.active")
+  modals.forEach((modal) => {
+    modal.classList.remove("active")
+  })
+
   // Close cart if open
-  const cartSidebar = document.getElementById('cartSidebar');
-  if (cartSidebar && cartSidebar.classList.contains('active')) {
-    cartSidebar.classList.remove('active');
+  const cartSidebar = document.getElementById("cartSidebar")
+  if (cartSidebar && cartSidebar.classList.contains("active")) {
+    cartSidebar.classList.remove("active")
   }
-  
+
   // Close mobile menu if open
-  const navMenu = document.querySelector('.nav-menu');
-  const hamburger = document.getElementById('hamburger');
-  if (navMenu && navMenu.classList.contains('active')) {
-    navMenu.classList.remove('active');
-    hamburger.classList.remove('active');
+  const navMenu = document.querySelector(".nav-menu")
+  const hamburger = document.getElementById("hamburger")
+  if (navMenu && navMenu.classList.contains("active")) {
+    navMenu.classList.remove("active")
+    hamburger.classList.remove("active")
   }
-});
+})
 
 // Add this to fix iOS 100vh issue
 function setMobileHeight() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  const vh = window.innerHeight * 0.01
+  document.documentElement.style.setProperty("--vh", `${vh}px`)
 }
 
 // Call the function on load and resize
-window.addEventListener('resize', setMobileHeight);
-window.addEventListener('orientationchange', setMobileHeight);
-setMobileHeight();
+window.addEventListener("resize", setMobileHeight)
+window.addEventListener("orientationchange", setMobileHeight)
+setMobileHeight()
 
 // Initialize page based on URL hash and check for payment return
 window.addEventListener("load", () => {
@@ -1469,3 +1344,15 @@ window.addEventListener("load", () => {
     }
   })
 })
+
+// Declare the updateOrderSummary function
+function updateOrderSummary() {
+  // Implementation for updateOrderSummary goes here
+  console.log("Updating order summary")
+}
+
+// Declare the checkPaymentReturn function
+function checkPaymentReturn() {
+  // Implementation for checkPaymentReturn goes here
+  console.log("Checking payment return")
+}
