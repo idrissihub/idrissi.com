@@ -8,6 +8,9 @@ const currentStep = 1
 
 // DOM Content Loaded
 document.addEventListener("DOMContentLoaded", () => {
+  // Add this function to the script.js file to handle the hamburger menu animation
+  // Add this right after the document.addEventListener("DOMContentLoaded", () => { line
+
   initializeApp()
   // Payment method selection
   const paymentOptions = document.querySelectorAll(".payment-option")
@@ -118,10 +121,11 @@ function initializeNavigation() {
   const navMenu = document.querySelector(".nav-menu")
   const navLinks = document.querySelectorAll(".nav-link")
 
-  // Hamburger menu toggle
+  // Hamburger menu toggle with animation
   if (hamburger) {
     hamburger.addEventListener("click", () => {
       navMenu.classList.toggle("active")
+      hamburger.classList.toggle("active") // Add this line for animation
     })
   }
 
@@ -136,6 +140,7 @@ function initializeNavigation() {
 
       // Close mobile menu
       navMenu.classList.remove("active")
+      hamburger.classList.remove("active") // Add this line for animation
 
       // Update active nav link
       navLinks.forEach((l) => l.classList.remove("active"))
@@ -1413,6 +1418,40 @@ window.addEventListener("popstate", (e) => {
     }
   })
 })
+
+// Add this function to improve mobile experience by closing modals on back button
+window.addEventListener('popstate', function(event) {
+  // Close any open modals when back button is pressed
+  const modals = document.querySelectorAll('.modal.active');
+  modals.forEach(modal => {
+    modal.classList.remove('active');
+  });
+  
+  // Close cart if open
+  const cartSidebar = document.getElementById('cartSidebar');
+  if (cartSidebar && cartSidebar.classList.contains('active')) {
+    cartSidebar.classList.remove('active');
+  }
+  
+  // Close mobile menu if open
+  const navMenu = document.querySelector('.nav-menu');
+  const hamburger = document.getElementById('hamburger');
+  if (navMenu && navMenu.classList.contains('active')) {
+    navMenu.classList.remove('active');
+    hamburger.classList.remove('active');
+  }
+});
+
+// Add this to fix iOS 100vh issue
+function setMobileHeight() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Call the function on load and resize
+window.addEventListener('resize', setMobileHeight);
+window.addEventListener('orientationchange', setMobileHeight);
+setMobileHeight();
 
 // Initialize page based on URL hash and check for payment return
 window.addEventListener("load", () => {
