@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idrissi - Professional Social Media Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Idrissi</span>
+                <span class="logo-subtitle">Social Media</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#services" class="nav-link">Our Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="cart-btn" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Professional<br>
+                        <span class="gradient-text">Social Media Services</span>
+                    </h1>
+                    <p class="hero-subtitle">Transform your digital presence with our cutting-edge social media growth solutions. Boost your followers, engagement, and reach across all major platforms.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showPage('services')">Explore Services</button>
+                        <button class="btn btn-secondary" onclick="showPage('about')">About</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Services -->
+        <div class="featured-services">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3>Instagram Growth Package</h3>
+                        <p>Complete Instagram growth solution with followers, likes, views, and engagement boost.</p>
+                        <div class="service-price">
+                            <span class="current-price">299 MAD</span>
+                            <span class="original-price">399 MAD</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="showServiceInPage('instagram')">Click to view packages →</button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3>YouTube Channel Boost</h3>
+                        <p>Grow your YouTube channel with subscribers, views, and watch time optimization.</p>
+                        <div class="service-price">
+                            <span class="current-price">399 MAD</span>
+                            <span class="original-price">499 MAD</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="showServiceInPage('youtube')">Click to view packages →</button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon facebook">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h3>Facebook Marketing Suite</h3>
+                        <p>Comprehensive Facebook marketing with page likes, post engagement, and reach.</p>
+                        <div class="service-price">
+                            <span class="current-price">249 MAD</span>
+                            <span class="original-price">349 MAD</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="showServiceInPage('facebook')">Click to view packages →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Idrissi -->
+        <div class="why-choose">
+            <div class="container">
+                <h2 class="section-title">Why Choose Idrissi?</h2>
+                <p class="section-subtitle">We deliver results that matter for your business</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon green">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>High-quality, real engagement from active users across all platforms</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon blue">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Fast Delivery</h3>
+                        <p>Quick turnaround times with results visible within 24-48 hours of service activation.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon purple">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock customer support to help you achieve your goals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Grow Your Social Media?</h2>
+                    <p>Join thousands of satisfied customers who have transformed their social media presence with our services.</p>
+                    <button class="btn btn-primary" onclick="showPage('services')">Get Started Today</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Page -->
+    <section id="services" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Services</h1>
+                <p>Choose the perfect growth package for your platform</p>
+            </div>
+
+            <div class="services-grid-full">
+                <!-- Instagram Growth Package -->
+                <div class="service-card-full" data-service="instagram">
+                    <div class="popular-badge">Popular</div>
+                    <div class="service-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram Growth Package</h3>
+                    <p>Complete Instagram growth solution with followers, likes, views, and engagement boost.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 1000+ Real Followers</li>
+                        <li><i class="fas fa-check"></i> 500+ Post Likes</li>
+                        <li><i class="fas fa-check"></i> Story Views</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">299 MAD</span>
+                        <span class="original-price">399 MAD</span>
+                        <span class="save-badge">Save 100 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('instagram-growth')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="instagram-growth" data-price="299" data-name="Instagram Growth Package">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- YouTube Channel Boost -->
+                <div class="service-card-full" data-service="youtube">
+                    <div class="service-icon youtube">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube Channel Boost</h3>
+                    <p>Grow your YouTube channel with subscribers, views, and watch time optimization.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 500+ Subscribers</li>
+                        <li><i class="fas fa-check"></i> 10K+ Video Views</li>
+                        <li><i class="fas fa-check"></i> Watch Time Boost</li>
+                        <li><i class="fas fa-check"></i> SEO Optimization</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">399 MAD</span>
+                        <span class="original-price">499 MAD</span>
+                        <span class="save-badge">Save 100 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('youtube-boost')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="youtube-boost" data-price="399" data-name="YouTube Channel Boost">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Facebook Marketing Suite -->
+                <div class="service-card-full" data-service="facebook">
+                    <div class="service-icon facebook">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>Facebook Marketing Suite</h3>
+                    <p>Comprehensive Facebook marketing with page likes, post engagement, and reach.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 1000+ Page Likes</li>
+                        <li><i class="fas fa-check"></i> Post Engagement</li>
+                        <li><i class="fas fa-check"></i> Reach Boost</li>
+                        <li><i class="fas fa-check"></i> Analytics Report</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">249 MAD</span>
+                        <span class="original-price">349 MAD</span>
+                        <span class="save-badge">Save 100 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('facebook-marketing')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="facebook-marketing" data-price="249" data-name="Facebook Marketing Suite">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- TikTok Viral Package -->
+                <div class="service-card-full" data-service="tiktok">
+                    <div class="popular-badge">Popular</div>
+                    <div class="service-icon tiktok">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>TikTok Viral Package</h3>
+                    <p>Make your TikTok content go viral with followers, likes, and views.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 2000+ Followers</li>
+                        <li><i class="fas fa-check"></i> 5K+ Video Likes</li>
+                        <li><i class="fas fa-check"></i> 50K+ Views</li>
+                        <li><i class="fas fa-check"></i> Trending Support</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">199 MAD</span>
+                        <span class="original-price">299 MAD</span>
+                        <span class="save-badge">Save 100 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('tiktok-viral')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="tiktok-viral" data-price="199" data-name="TikTok Viral Package">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Kick Streamer Growth -->
+                <div class="service-card-full" data-service="kick">
+                    <div class="service-icon kick">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Kick Streamer Growth</h3>
+                    <p>Boost your Kick streaming with followers, viewers, and engagement.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 500+ Followers</li>
+                        <li><i class="fas fa-check"></i> Live Viewers</li>
+                        <li><i class="fas fa-check"></i> Chat Engagement</li>
+                        <li><i class="fas fa-check"></i> Stream Promotion</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">179 MAD</span>
+                        <span class="original-price">249 MAD</span>
+                        <span class="save-badge">Save 70 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('kick-growth')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="kick-growth" data-price="179" data-name="Kick Streamer Growth">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Microsoft Office Suite -->
+                <div class="service-card-full" data-service="office">
+                    <div class="popular-badge">Popular</div>
+                    <div class="service-icon office">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Microsoft Office Suite</h3>
+                    <p>Get premium Microsoft Office subscriptions at discounted rates with full support.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Word, Excel, PowerPoint</li>
+                        <li><i class="fas fa-check"></i> OneDrive Storage</li>
+                        <li><i class="fas fa-check"></i> Microsoft Teams</li>
+                        <li><i class="fas fa-check"></i> Technical Support</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">249 MAD</span>
+                        <span class="original-price">349 MAD</span>
+                        <span class="save-badge">Save 100 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('office-suite')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="office-suite" data-price="249" data-name="Microsoft Office Suite">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Canva Pro Subscription -->
+                <div class="service-card-full" data-service="canva">
+                    <div class="service-icon canva">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Canva Pro Subscription</h3>
+                    <p>Unlock premium design tools with Canva Pro for stunning graphics and presentations.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Premium Templates</li>
+                        <li><i class="fas fa-check"></i> Brand Kit</li>
+                        <li><i class="fas fa-check"></i> Background Remover</li>
+                        <li><i class="fas fa-check"></i> 100GB Storage</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">149 MAD</span>
+                        <span class="original-price">199 MAD</span>
+                        <span class="save-badge">Save 50 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('canva-pro')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="canva-pro" data-price="149" data-name="Canva Pro Subscription">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Netflix Premium -->
+                <div class="service-card-full" data-service="netflix">
+                    <div class="popular-badge">Popular</div>
+                    <div class="service-icon netflix">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <h3>Netflix Premium Subscription</h3>
+                    <p>Get premium Netflix subscriptions with 4K streaming and multiple device access.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 4K Ultra HD</li>
+                        <li><i class="fas fa-check"></i> Multiple Devices</li>
+                        <li><i class="fas fa-check"></i> Ad-Free Experience</li>
+                        <li><i class="fas fa-check"></i> Unlimited Movies & Shows</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">129 MAD</span>
+                        <span class="original-price">179 MAD</span>
+                        <span class="save-badge">Save 50 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('netflix-premium')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="netflix-premium" data-price="129" data-name="Netflix Premium Subscription">Quick Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Spotify Premium -->
+                <div class="service-card-full" data-service="spotify">
+                    <div class="popular-badge">Popular</div>
+                    <div class="service-icon spotify">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Spotify Premium Subscription</h3>
+                    <p>Get premium Spotify subscriptions with ad-free music streaming and offline listening.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Ad-Free Listening</li>
+                        <li><i class="fas fa-check"></i> Offline Downloads</li>
+                        <li><i class="fas fa-check"></i> High Quality Audio</li>
+                        <li><i class="fas fa-check"></i> Unlimited Skips</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="current-price">99 MAD</span>
+                        <span class="original-price">149 MAD</span>
+                        <span class="save-badge">Save 50 MAD</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="showServiceDetails('spotify-premium')">View Details</button>
+                        <button class="btn btn-outline add-to-cart" data-service="spotify-premium" data-price="99" data-name="Spotify Premium Subscription">Quick Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>About Idrissi</h1>
+                <p>Your trusted partner in digital growth and social media success</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-section">
+                    <h2>Our Story</h2>
+                    <p>Founded with a vision to democratize digital marketing, Idrissi has been at the forefront of social media growth services since our inception. We understand that in today's digital landscape, having a strong online presence is not just an advantage—it's a necessity.</p>
+                    <p>Our team of digital marketing experts, data analysts, and social media specialists work tirelessly to provide authentic, high-quality growth solutions that deliver real results for businesses and individuals alike.</p>
+                </div>
+
+                <div class="mission-vision">
+                    <div class="mission">
+                        <h3>Our Mission</h3>
+                        <p>To empower businesses and creators with the tools and services they need to build authentic, engaged communities across all major social media platforms. We believe in sustainable growth that creates lasting value.</p>
+                    </div>
+                    <div class="vision">
+                        <h3>Our Vision</h3>
+                        <p>To become the world's most trusted platform for digital growth services, setting the standard for quality, authenticity, and customer satisfaction in the social media marketing industry.</p>
+                    </div>
+                </div>
+
+                <div class="why-choose-about">
+                    <h2>Why Choose Us?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon purple">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Quality Assurance</h3>
+                            <p>All our services are backed by real, active users and comply with platform guidelines.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon green">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Fast Results</h3>
+                            <p>See improvements in your social media metrics within 24-48 hours of service activation.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon red">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>24/7 Support</h3>
+                            <p>Our dedicated support team is always available to help you achieve your goals.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon orange">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Secure & Reliable</h3>
+                            <p>Your data and privacy are protected with enterprise-grade security measures and reliable service delivery.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <div class="cta-content">
+                        <h2>Ready to Start Your Journey?</h2>
+                        <p>Join thousands of satisfied customers who have transformed their digital presence with Idrissi.</p>
+                        <button class="btn btn-primary" onclick="showPage('services')">Explore Our Services</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team for any questions or support</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-form-section">
+                    <h2>Send us a Message</h2>
+                    <form class="contact-form" id="contactForm" onsubmit="sendToWhatsApp(event)">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" name="phone" placeholder="+212 6XX XXX XXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" name="subject" placeholder="What is this about?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" placeholder="Tell us more about your inquiry..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary contact-send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info-section">
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        
+                        <div class="contact-item">
+                            <div class="contact-emoji">📞</div>
+                            <div class="contact-details">
+                                <h3>Phone</h3>
+                                <p>+212 770 264 606</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-emoji">📧</div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>contact@idrissi.ma</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-emoji">📍</div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>Morocco</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="business-hours">
+                        <h3>Business Hours</h3>
+                        <div class="hours-item">
+                            <span>Monday - Friday</span>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Saturday</span>
+                            <span>10:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Sunday</span>
+                            <span>Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be populated by JavaScript -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: <span id="cartTotal">0</span> MAD</strong>
+            </div>
+            <button class="btn btn-primary checkout-btn" id="checkoutBtn">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Service Details Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">YouTube Channel Boost</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="service-details">
+                    <div class="service-image-container">
+                        <div class="service-icon-large youtube">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="service-badge">Premium Service</div>
+                    </div>
+                    <div class="service-info">
+                        <div class="price-display">
+                            <span class="current-price">399 MAD</span>
+                            <span class="original-price">499 MAD</span>
+                        </div>
+                        <p class="service-description">Grow your YouTube channel with subscribers, views, and watch time optimization.</p>
+                        
+                        <div class="included-features">
+                            <h4>What's Included:</h4>
+                            <li><i class="fas fa-check"></i> 500+ Subscribers</li>
+                            <li><i class="fas fa-check"></i> 10K+ Video Views</li>
+                            <li><i class="fas fa-check"></i> Watch Time Boost</li>
+                            <li><i class="fas fa-check"></i> SEO Optimization</li>
+                        </div>
+
+                        <h4>Select Package</h4>
+                        <div class="package-options">
+                            <div class="package-option active">
+                                <span class="package-name">Starter</span>
+                                <span class="package-price">399 MAD</span>
+                            </div>
+                            <div class="package-option">
+                                <span class="package-name">Growth</span>
+                                <span class="package-price">499 MAD</span>
+                            </div>
+                            <div class="package-option">
+                                <span class="package-name">Pro</span>
+                                <span class="package-price">599 MAD</span>
+                            </div>
+                            <div class="package-option">
+                                <span class="package-name">Enterprise</span>
+                                <span class="package-price">699 MAD</span>
+                            </div>
+                        </div>
+
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+
+                        <button class="btn btn-primary add-to-cart-modal">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content large">
+            <div class="checkout-steps">
+                <!-- Shipping Information -->
+                <div class="checkout-step active" id="shippingStep">
+                    <div class="step-header">
+                        <h2>Shipping Information</h2>
+                    </div>
+                    <form class="shipping-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" placeholder="Enter your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Enter your last name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" placeholder="Enter your phone number" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" placeholder="Enter your address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" placeholder="Enter your city" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" placeholder="Enter your postal code" required>
+                            </div>
+                        </div>
+                        <div class="step-actions">
+                            <button type="button" class="btn btn-secondary" onclick="closeCheckout()">Back to Cart</button>
+                            <button type="button" class="btn btn-primary" onclick="goToPayment()">Continue to Payment</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="checkout-step" id="paymentStep">
+                    <div class="step-header">
+                        <h2>Payment Method</h2>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div id="orderSummaryItems">
+                            <!-- Order items will be populated by JavaScript -->
+                        </div>
+                        <div class="order-total">
+                            <span>Total</span>
+                            <span class="total-price" id="orderTotalPrice">0 MAD</span>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <h3>Payment Method</h3>
+                        
+                        <div class="payment-option active">
+                            <input type="radio" id="paypal" name="payment" value="paypal" checked>
+                            <label for="paypal">
+                                <div class="payment-header">
+                                    <div class="payment-icon paypal-icon">
+                                        <i class="fab fa-paypal"></i>
+                                    </div>
+                                    <div class="payment-title">
+                                        <span class="payment-name">PayPal</span>
+                                        <span class="payment-badge">Secure</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="payment-description enhanced">
+                                <div class="payment-intro">
+                                    <p>Pay securely with PayPal. You'll be redirected to PayPal where you can:</p>
+                                </div>
+                                
+                                <div class="payment-options-list">
+                                    <div class="payment-option-item">
+                                        <div class="option-icon">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <span>Log in to your PayPal account, or</span>
+                                    </div>
+                                    <div class="payment-option-item">
+                                        <div class="option-icon">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                        <span>Pay with your credit/debit card as a guest</span>
+                                    </div>
+                                    <div class="payment-option-item">
+                                        <div class="option-icon">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <span>Enter your payment information securely</span>
+                                    </div>
+                                </div>
+
+                                <div class="payment-details">
+                                    <div class="payment-recipient">
+                                        <div class="recipient-label">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>Payment will be sent to:</span>
+                                        </div>
+                                        <div class="recipient-email">cnt.idrissi@gmail.com</div>
+                                    </div>
+                                    
+                                    <div class="currency-note">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        <span>Amount will be converted to USD for PayPal processing</span>
+                                    </div>
+                                </div>
+
+                                <div class="security-badges">
+                                    <div class="security-badge">
+                                        <i class="fas fa-lock"></i>
+                                        <span>256-bit SSL</span>
+                                    </div>
+                                    <div class="security-badge">
+                                        <i class="fas fa-shield-check"></i>
+                                        <span>Buyer Protection</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button type="button" class="btn btn-secondary" onclick="goToShipping()">Back to Shipping</button>
+                        <button type="button" class="btn btn-primary" onclick="processPayment()">Complete Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div class="modal" id="thankYouModal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="thank-you-content">
+                    <div class="thank-you-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Thank You!</h2>
+                    <p>Thank you for visiting <strong>Idrissi</strong> and choosing our services!</p>
+                    <p>Your order has been successfully placed and we'll get started on your social media growth right away.</p>
+                    <div class="thank-you-details">
+                        <p><strong>What happens next?</strong></p>
+                        <ul>
+                            <li>You'll receive a confirmation email shortly</li>
+                            <li>Our team will begin processing your order within 24 hours</li>
+                            <li>You'll start seeing results within 24-48 hours</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="closeThankYou()">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content search-modal">
+            <div class="search-modal-header">
+                <div class="search-input-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search services, pages..." autocomplete="off">
+                    <button class="close-search" id="closeSearch">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        <div class="search-modal-body">
+            <div id="searchResults" class="search-results">
+                <!-- Search results will be populated by JavaScript -->
+            </div>
+            <div class="search-suggestions">
+                <h4>Popular searches:</h4>
+                <div class="search-tags">
+                    <span class="search-tag" onclick="document.getElementById('searchInput').value='Instagram'; document.getElementById('searchInput').dispatchEvent(new Event('input'))">Instagram</span>
+                    <span class="search-tag" onclick="document.getElementById('searchInput').value='YouTube'; document.getElementById('searchInput').dispatchEvent(new Event('input'))">YouTube</span>
+                    <span class="search-tag" onclick="document.getElementById('searchInput').value='Netflix'; document.getElementById('searchInput').dispatchEvent(new Event('input'))">Netflix</span>
+                    <span class="search-tag" onclick="document.getElementById('searchInput').value='Office'; document.getElementById('searchInput').dispatchEvent(new Event('input'))">Office</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Idrissi</h3>
+                    <p>Professional social media services for modern businesses. Transform your digital presence with our expert solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#" onclick="showServiceInPage('instagram'); return false;">Instagram Growth</a></li>
+                        <li><a href="#" onclick="showServiceInPage('youtube'); return false;">YouTube Marketing</a></li>
+                        <li><a href="#" onclick="showServiceInPage('facebook'); return false;">Facebook Promotion</a></li>
+                        <li><a href="#" onclick="showServiceInPage('tiktok'); return false;">TikTok Viral</a></li>
+                        <li><a href="#" onclick="showServiceInPage('kick'); return false;">Kick Streaming</a></li>
+                        <li><a href="#" onclick="showServiceDetails('office-suite'); return false;">Microsoft Office</a></li>
+                        <li><a href="#" onclick="showServiceDetails('canva-pro'); return false;">Canva Pro</a></li>
+                        <li><a href="#" onclick="showServiceDetails('netflix-premium'); return false;">Netflix Premium</a></li>
+                        <li><a href="#" onclick="showServiceDetails('spotify-premium'); return false;">Spotify Premium</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPage('about'); return false;">About Us</a></li>
+                        <li><a href="#" onclick="showPage('contact'); return false;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Idrissi Social Media Services. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
