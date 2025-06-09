@@ -2172,6 +2172,378 @@ body {
   }
 }
 
+/* Add these mobile-specific enhancements at the end of the file */
+
+/* Mobile Enhancements */
+@media (max-width: 768px) {
+  /* Improved mobile navigation */
+  .nav-menu {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 2rem 1rem;
+  }
+  
+  .nav-menu li {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+  
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Enhanced mobile cards */
+  .service-card, 
+  .service-card-full,
+  .feature-card {
+    transform: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .service-card:active, 
+  .service-card-full:active,
+  .feature-card:active {
+    transform: scale(0.98) !important;
+  }
+  
+  /* Better mobile spacing */
+  .hero {
+    padding: 4rem 0 2rem;
+  }
+  
+  .hero-content {
+    padding: 0 0.5rem;
+  }
+  
+  .hero-title {
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Enhanced mobile buttons */
+  .btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    min-height: 50px;
+    font-weight: 600;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Improved mobile forms */
+  .form-group input,
+  .form-group textarea {
+    padding: 1rem;
+    font-size: 1rem;
+    min-height: 50px;
+  }
+  
+  /* Enhanced mobile contact items */
+  .contact-item {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .contact-emoji {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  /* Better mobile modals */
+  .modal-content {
+    border-radius: 1.5rem;
+    max-height: 85vh;
+  }
+  
+  .modal-header {
+    padding: 1.25rem;
+  }
+  
+  .modal-body {
+    padding: 1.25rem;
+  }
+  
+  /* Enhanced mobile cart */
+  .cart-sidebar {
+    width: 100%;
+  }
+  
+  .cart-header {
+    padding: 1.25rem;
+  }
+  
+  .cart-items {
+    padding: 1.25rem;
+  }
+  
+  .cart-item {
+    padding: 1.25rem 0;
+  }
+  
+  /* Better mobile footer */
+  .footer-content {
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  /* Enhanced mobile search */
+  .search-modal {
+    max-height: 85vh;
+  }
+  
+  .search-input-container {
+    padding: 0.875rem 1rem;
+  }
+  
+  #searchInput {
+    font-size: 1rem;
+  }
+  
+  .search-result-item {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+  }
+  
+  /* Mobile-specific animations */
+  @keyframes mobileHighlight {
+    0% { background-color: rgba(139, 92, 246, 0.1); }
+    100% { background-color: transparent; }
+  }
+  
+  .service-card-full.highlight {
+    animation: mobileHighlight 1.5s ease;
+  }
+}
+
+/* Small mobile enhancements */
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .page-header p {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .service-card h3,
+  .service-card-full h3,
+  .feature-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .service-icon,
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service-price {
+    margin: 1rem 0;
+  }
+  
+  .current-price {
+    font-size: 1.5rem;
+  }
+  
+  .original-price {
+    font-size: 1rem;
+  }
+  
+  .service-features li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .service-actions {
+    margin-top: 1rem;
+  }
+  
+  .service-actions .btn {
+    padding: 0.875rem 1rem;
+  }
+  
+  /* Fix mobile modal content */
+  .service-details {
+    gap: 1.5rem;
+  }
+  
+  .service-icon-large {
+    width: 70px;
+    height: 70px;
+    font-size: 1.75rem;
+  }
+  
+  .package-options {
+    gap: 0.5rem;
+  }
+  
+  .package-option {
+    padding: 0.875rem 0.5rem;
+  }
+  
+  /* Fix mobile checkout */
+  .checkout-step {
+    padding: 1.25rem;
+  }
+  
+  .step-header h2 {
+    font-size: 1.75rem;
+  }
+  
+  .payment-option label {
+    padding: 1.25rem 1rem;
+  }
+  
+  .payment-description.enhanced {
+    padding: 1.25rem 1rem;
+  }
+  
+  /* Fix mobile thank you modal */
+  .thank-you-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .thank-you-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .thank-you-content h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Fix hamburger menu animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Add smooth scrolling for all devices */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improve tap highlight color for mobile */
+* {
+  -webkit-tap-highlight-color: rgba(139, 92, 246, 0.2);
+}
+
+/* Fix iOS input styling */
+input, 
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.5rem;
+}
+
+/* Fix iOS momentum scrolling */
+.modal-content,
+.cart-items,
+.search-modal-body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix sticky hover on mobile */
+@media (hover: hover) {
+  .service-card:hover,
+  .service-card-full:hover,
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-gray: #000000;
+    --text-gray: #000000;
+  }
+
+  .service-card,
+  .feature-card,
+  .contact-item {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .cart-sidebar,
+  .modal,
+  .search-btn,
+  .cart-btn,
+  .hamburger {
+    display: none !important;
+  }
+
+  .page {
+    padding-top: 0 !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  .hero,
+  .cta-section {
+    background: white !important;
+    color: black !important;
+  }
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -2373,16 +2745,7 @@ body {
 
 /* Print styles */
 @media print {
-  .navbar,
-  .cart-sidebar,
-  .modal,
-  .search-btn,
-  .cart-btn,
-  .hamburger {
-    display: none !important;
-  }
-
-  .page {
+  .navbar,  .page {
     padding-top: 0 !important;
   }
 
@@ -2397,3 +2760,24 @@ body {
     color: black !important;
   }
 }
+
+.cart-sidebar,
+  .modal,
+  .search-btn,
+  .cart-btn,
+  .hamburger {
+    display: none !important;
+  }
+  .page {
+    padding-top: 0 !important;
+  }
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  .hero,
+  .cta-section {
+    background: white !important;
+    color: black !important;
+  }
+
