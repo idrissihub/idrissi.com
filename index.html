@@ -9,6 +9,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Add viewport height fix to the head section -->
+<style>
+  /* Fix for iOS 100vh issue */
+  .page {
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+  
+  .cart-sidebar {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+  
+  /* Add active state styles for hamburger menu */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+</style>
 </head>
 <body>
     <!-- Navigation -->
